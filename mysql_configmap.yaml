@@ -1,10 +1,16 @@
-# mysql-configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: mysql-config
+  name: mysql
+  labels:
+    app: mysql
+    app.kubernetes.io/name: mysql
 data:
-  MYSQL_ROOT_PASSWORD: 0131
-  MYSQL_REPLICATION_USER: wang
-  MYSQL_REPLICATION_PASSWORD: 0131
-  MYSQL_DATABASE: test
+  primary.cnf: |
+    # Apply this config only on the primary.
+    [mysqld]
+    log-bin    
+  replica.cnf: |
+    # Apply this config only on replicas.
+    [mysqld]
+    super-read-only    
