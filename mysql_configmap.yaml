@@ -1,0 +1,10 @@
+# mysql-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+data:
+  MYSQL_ROOT_PASSWORD: 0131
+  MYSQL_REPLICATION_USER: wang
+  MYSQL_REPLICATION_PASSWORD: 0131
+  MYSQL_DATABASE: test
